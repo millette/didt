@@ -6,6 +6,9 @@
     "cli.js"
   ],
   "license": "AGPL-3.0",
+  "engines": {
+    "node": ">=8.9.4"
+  },
   "scripts": {
     "deps": "standard && dependency-check . && dependency-check . --unused --no-dev",
     "lint": "standard"

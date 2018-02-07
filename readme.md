@@ -2,6 +2,8 @@
 
 ## Installation
 
+Requires node 8.9.4 (LTS) or above.
+
 ```
 git clone ...
 yarn # ou npm install
