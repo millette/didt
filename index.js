@@ -26,6 +26,7 @@ const setup = () => {
     request: https.request.bind(null, {
       method: 'POST',
       ...url.parse('https://api.github.com/graphql'),
+      // ...new URL('https://api.github.com/graphql'),
       headers: {
         'User-Agent': name + ' ' + version,
         Authorization: 'bearer ' + process.env.GITHUB_TOKEN
@@ -108,13 +109,13 @@ const dothem2 = async (userFn, vars) => {
   const ret = await doone(userFn, vars)
   ret.allDone = ret.allDone ? (ret.allDone + ret.done) : ret.done
 
-/*
+  /*
   if (vars && vars.rateLimit) { console.error('RATELIMIT-vars:', vars.rateLimit) }
   console.error('RATELIMIT-ret:', ret.rateLimit)
   const pagesLeft = ret.rateLimit.remaining / ret.rateLimit.cost
   const pageSpeed = Math.round(1000 * ret.rateLimit.secondsLeft / pagesLeft) / 1000
   console.error('ELAPSED:', Math.round(Date.now() - now), ret.count, ret.allDone, PER_PAGE, ret.count, pageSpeed)
-*/
+  */
   if (ret.after) { return dothem2(userFn, ret) }
   if (ret.allDone !== ret.count) { console.error('Warning, incomplete!') }
   return ret
