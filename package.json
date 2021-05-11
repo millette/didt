@@ -8,11 +8,11 @@
     "node": ">=14.0.0"
   },
   "scripts": {
-    "deps": "standard && dependency-check . && dependency-check . --unused --no-dev",
+    "deps": "standard && dependency-check . --no-dev",
     "lint": "standard"
   },
   "devDependencies": {
-    "dependency-check": "^3.0.0",
+    "dependency-check": "^4.1.0",
     "standard": "^16.0.3"
   },
   "dependencies": {
