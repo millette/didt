@@ -1,7 +1,6 @@
 'use strict'
 
 const PER_PAGE = 100
-// const USER = 'millette'
 
 if (!process.argv[2]) { throw new Error('Missing user argument.') }
 
@@ -12,21 +11,20 @@ const https = require('https')
 
 // npm
 const JSONStream = require('JSONStream')
-// const pick = require('lodash.pickby')
 
-// const slim = (user) => pick(user, Boolean)
+const u1 = new URL('https://api.github.com/graphql')
+const {  protocol, hostname, pathname } = u1
+const uuu = {  protocol, hostname, pathname }
 
 const setup = () => {
   const { readFileSync } = require('fs')
   const { parse } = require('dotenv')
-  // const url = require('url')
   process.env = { ...process.env, ...parse(readFileSync('.env')) }
   const { name, version } = require('./package.json')
   return {
     request: https.request.bind(null, {
       method: 'POST',
-      // ...url.parse('https://api.github.com/graphql'),
-      ...new URL('https://api.github.com/graphql'),
+      ...uuu,
       headers: {
         'User-Agent': name + ' ' + version,
         Authorization: 'bearer ' + process.env.GITHUB_TOKEN
