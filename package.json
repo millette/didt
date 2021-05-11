@@ -2,12 +2,10 @@
   "name": "didt",
   "version": "0.0.0",
   "main": "index.js",
-  "bin": [
-    "cli.js"
-  ],
+  "bin": "cli.js",
   "license": "AGPL-3.0",
   "engines": {
-    "node": ">=8.9.4"
+    "node": ">=14.0.0"
   },
   "scripts": {
     "deps": "standard && dependency-check . && dependency-check . --unused --no-dev",
