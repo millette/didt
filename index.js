@@ -19,14 +19,14 @@ const JSONStream = require('JSONStream')
 const setup = () => {
   const { readFileSync } = require('fs')
   const { parse } = require('dotenv')
-  const url = require('url')
+  // const url = require('url')
   process.env = { ...process.env, ...parse(readFileSync('.env')) }
   const { name, version } = require('./package.json')
   return {
     request: https.request.bind(null, {
       method: 'POST',
-      ...url.parse('https://api.github.com/graphql'),
-      // ...new URL('https://api.github.com/graphql'),
+      // ...url.parse('https://api.github.com/graphql'),
+      ...new URL('https://api.github.com/graphql'),
       headers: {
         'User-Agent': name + ' ' + version,
         Authorization: 'bearer ' + process.env.GITHUB_TOKEN
